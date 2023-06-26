@@ -1,0 +1,33 @@
+.navbar{
+    height: 75px !important;
+}
+
+.searchbox{
+    width: 30vw;
+    padding: 9px;
+    height: auto;
+}
+
+.searchicon{
+    display: none;
+}
+
+.nav-profile-pic{
+    margin-bottom:-9px ;
+    margin-top:-20px ;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 450px){
+    .searchbox{
+        display: none;
+    }
+    .navbar-brand{
+        margin-left: 5px !important;
+    }
+    .searchicon{
+        display: block;
+    }
+}
