@@ -17,6 +17,29 @@ const Card = (props) => {
 
   const [liked, setLiked] = useState(false);
 
+  //get the ago time of post
+  const getAgoTime = (postTime) => {
+    const currentTime = new Date();
+    const postDate = new Date(postTime);
+    const diff = currentTime - postDate;
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+  
+    if (days > 0) {
+      return `${days} day${days > 1 ? 's' : ''} ago`;
+    } else if (hours > 0) {
+      return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+    } else if (minutes > 0) {
+      return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+    } else {
+      return `${seconds} second${seconds !== 1 ? 's' : ''} ago`;
+    }
+  };
+
+  const agoTime = getAgoTime(props.postData.createdAt);
+  console.log(agoTime);
   const likeDislikePost = async (postId, type) => {
     if (type === "like") {
       if (!liked) {
@@ -96,15 +119,21 @@ const Card = (props) => {
                 alt="post pic"
                 src={props.postData.image}
               />
+              {
+                props.postData.description ?
+                  <div className="p-2">
+                    {props.postData.description}
+                  </div>
+                  : ""
+              }
             </div>
           </div>
           <div className="row my-3">
             <div className="col-6 d-flex">
               <i
                 onClick={() => likeDislikePost(props.postData._id, "like")}
-                className={`ps-2 fs-4 fa-regular ${
-                  liked ? "fa-heart text-danger" : "fa-heart"
-                }`}
+                className={`ps-2 fs-4 fa-regular ${liked ? "fa-heart text-danger" : "fa-heart"
+                  }`}
               ></i>
               <i
                 onClick={() => likeDislikePost(props.postData._id, "dislike")}
@@ -152,7 +181,7 @@ const Card = (props) => {
           })}
           <div className="row">
             <div className="col-12">
-              <span className="p-2 text-muted">2 Hours Ago</span>
+              <span className="p-2 text-muted">{agoTime}</span>
             </div>
           </div>
         </div>

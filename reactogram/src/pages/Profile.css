@@ -33,7 +33,7 @@
 }
 .upload-box{
     height: 400px;
-    width: 490px;
+    width: 80%;
     border: 2px rgba(0, 0, 0, 0.524);
     border-style: dashed;
     border-radius: 4px;

@@ -17,17 +17,16 @@ function App() {
 
     useEffect(() => {
 
-      const userData = JSON.parse(localStorage.getItem("user"));
+      const userData = JSON.parse(localStorage.getItem("User"));
       if (userData) {//when user has a login active session
         dispatch({ type: "LOGIN_SUCCESS", payload: userData });
-        navigate("/posts");
       } else {
         localStorage.removeItem("token");
-        localStorage.removeItem("user");
+        localStorage.removeItem("User");
         dispatch({ type: "LOGIN_ERROR" });
         navigate("/login");
-      }
-    }, []);
+      }  //eslint-disable-next-line
+    }, []); 
 
     return (
       <Routes>

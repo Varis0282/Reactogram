@@ -15,7 +15,7 @@ const Navbar = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("User");
         dispatch({type : "LOGIN_ERROR"});
-        navigate('/');
+        navigate('/login');
     }
 
     return (
@@ -23,13 +23,13 @@ const Navbar = () => {
             <nav className="navbar bg-light shadow-sm">
                 <div className="container-fluid">
                     <NavLink className="navbar-brand ms-5" to='/'>
-                        <img alt='Logo' src={logo} height="55px" />
+                        <img alt='Logo' src={logo} height="55px" className='navbar-pic' />
                     </NavLink>
-                    <form className="d-flex me-md-5">
+                    <form className="d-flex me-md-5 align-items-center">
                         { localStorage.getItem("token") != null ?<input className="searchbox form-control me-2" type="search" placeholder="Search" /> : ''}
-                        <NavLink className="nav-link text-dark fs-5 searchicon" to="#"><i className="fa-solid fa-magnifying-glass"></i></NavLink>
-                        {localStorage.getItem("token") != null ? <NavLink className="nav-link text-dark fs-5" to="/posts"><i className="fa-solid fa-house"></i></NavLink>:<NavLink className="nav-link text-dark fs-5" to="/"><i className="fa-solid fa-house"></i></NavLink>}
-                        { localStorage.getItem("token") != null ?<NavLink className="nav-link text-dark fs-5" to="#"><i className="fa-regular fa-heart"></i></NavLink> : ''}
+                        <NavLink className="nav-link text-dark fs-5 icons searchicon icons-hide" to="#"><i className="fa-solid fa-magnifying-glass"></i></NavLink>
+                        {localStorage.getItem("token") != null ? <NavLink className="nav-link text-dark fs-5 icons" to="/posts"><i className="fa-solid fa-house"></i></NavLink>:<NavLink className="nav-link text-dark fs-5 icons" to="/"><i className="fa-solid fa-house"></i></NavLink>}
+                        { localStorage.getItem("token") != null ?<NavLink className="nav-link text-dark fs-5 icons icons-hide" to="#"><i className="fa-regular fa-heart"></i></NavLink> : ''}
                         { localStorage.getItem("token") != null ?<Dropdown>
                             <Dropdown.Toggle variant="none" className="custom-toggle">
                             <img className='nav-profile-pic' alt="profile pic" src="https://images.unsplash.com/photo-1445543949571-ffc3e0e2f55e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8d2ludGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" />

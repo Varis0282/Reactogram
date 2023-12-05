@@ -16,6 +16,12 @@
 
 .custom-btn-blue{
     border: 1px solid #b3e0ff;
+    background-color: #029aff;
+    color: #fff;
+}
+
+.custom-btn-disabled{
+    border: 1px solid #b3e0ff;
     background-color: #b3e0ff;
     color: #fff;
 }

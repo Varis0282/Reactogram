@@ -8,8 +8,8 @@ const { JWT_SECRET } = require("../config");
 
 //signup routing
 router.post("/signup", (req, res) => {
-  const { fullName, email, password } = req.body;
-  if (!fullName || !password || !email) {
+  const { fullName, email, password,userName } = req.body;
+  if (!fullName || !password || !email || !userName) {
     return res
       .status(400)
       .json({ error: "One or more mandatory fields are empty" });
@@ -28,11 +28,12 @@ router.post("/signup", (req, res) => {
             fullName,
             email,
             password: hashedPassword,
+            userName
           });
           user
             .save()
             .then((newUser) => {
-              res.status(201).json({ result: "User Signed up Successfully!" });
+              res.status(201).json({ result: "User Signed up Successfully!" , user: newUser});
             })
             .catch((err) => {
               console.log(err);
@@ -69,6 +70,7 @@ router.post("/login", (req, res) => {
               id: userInDB._id,
               fullName: userInDB.fullName,
               email: userInDB.email,
+              userName: userInDB.userName,
             };
             res
               .status(200)
