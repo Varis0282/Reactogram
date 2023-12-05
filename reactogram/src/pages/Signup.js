@@ -24,7 +24,7 @@ const Signup = () => {
         setLoading(true);
         event.preventDefault();
         const requestData = { fullName: fullName, email: email, password: password, userName: userName }
-        axios.post(`${API_BASE_URL}/signup`, requestData)
+        axios.post(`/signup`, requestData)
             .then((result) => {
                 if (result.status === 201) {
                     setLoading(false);

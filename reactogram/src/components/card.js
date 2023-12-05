@@ -45,7 +45,7 @@ const Card = (props) => {
       if (!liked) {
         const request = { postId: postId };
         const response = await axios.put(
-          `${API_BASE_URL}/like/`,
+          `/like/`,
           request,
           CONFIG_URL
         );
@@ -59,7 +59,7 @@ const Card = (props) => {
       if (liked) {
         const request = { postId: postId };
         const response = await axios.put(
-          `${API_BASE_URL}/unlike/`,
+          `/unlike/`,
           request,
           CONFIG_URL
         );
@@ -74,7 +74,7 @@ const Card = (props) => {
   const submitComment = async (postId) => {
     const request = { postId: postId, commentText: comment };
     const response = await axios.put(
-      `${API_BASE_URL}/comment/`,
+      `/comment/`,
       request,
       CONFIG_URL
     );

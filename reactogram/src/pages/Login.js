@@ -22,7 +22,7 @@ const Login = () => {
         setLoading(true);
         event.preventDefault();
         const requestData = { email, password }
-        axios.post(`${API_BASE_URL}/login`, requestData)
+        axios.post(`/login`, requestData)
             .then((result) => {
                 if (result.status === 200) {
                     setLoading(false);

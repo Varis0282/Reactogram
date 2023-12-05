@@ -15,7 +15,7 @@ const Postoverview = () => {
   const [allPosts, setAllPosts] = useState([]);
 
   const getAllPosts = async () => {
-    const response = await axios.get(`${API_BASE_URL}/allposts`);
+    const response = await axios.get(`/allposts`);
     if (response.status === 200) {
       setAllPosts(response.data.posts);
     } else {
@@ -29,7 +29,7 @@ const Postoverview = () => {
   const deletePost = async (postId) => {
     try {
       const response = await axios.delete(
-        `${API_BASE_URL}/deletepost/${postId}`,
+        `/deletepost/${postId}`,
         CONFIG_URL
       );
 

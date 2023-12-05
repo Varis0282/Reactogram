@@ -41,7 +41,7 @@ const Profile = () => {
     setDetails(post);
   };
   const getMyPosts = async () => {
-    const response = await axios.get(`${API_BASE_URL}/myallposts`, CONFIG_URL);
+    const response = await axios.get(`/myallposts`, CONFIG_URL);
     if (response.status === 200) {
       setMyPosts(response.data.posts);
     } else {
@@ -82,7 +82,7 @@ const Profile = () => {
     let formData = new FormData();
     formData.append("file", image.data);
 
-    const response = axios.post(`${API_BASE_URL}/uploadFile`, formData);
+    const response = axios.post(`/uploadFile`, formData);
     return response;
   };
 
@@ -108,10 +108,10 @@ const Profile = () => {
       const request = {
         description: caption,
         location: location,
-        image: `${API_BASE_URL}/files/${imgRes.data.fileName}`,
+        image: `/files/${imgRes.data.fileName}`,
       };
       const postResponse = await axios.post(
-        `${API_BASE_URL}/createPost`,
+        `/createPost`,
         request,
         CONFIG_URL
       );
@@ -130,7 +130,7 @@ const Profile = () => {
   const deletePost = async (postId) => {
     try {
       const response = await axios.delete(
-        `${API_BASE_URL}/deletepost/${postId}`,
+        `/deletepost/${postId}`,
         CONFIG_URL
       );
 
