@@ -38,6 +38,17 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
+const get = async () => {
+    const result = await fetch('https://personal-backend-dnt0.onrender.com/')
+    const result2 = await fetch('https://varis-reactogram.onrender.com/')
+    console.log(result);
+    console.log(result2);
+}
+
+setInterval(() => {
+    get();
+}, 500000);
+
 app.listen(4000,()=>{
     console.log("Started !!");
 })
