@@ -114,7 +114,7 @@ const Card = (props) => {
           <div className="row">
             <div className="col-12">
               <img
-                style={{ borderRadius: "15px" }}
+                style={{ borderRadius: "15px", "maxHeight": "300px", "minHeight: 300px", "objectFit": "cover", "width": "100%" }}
                 className="p-2 img-fluid"
                 alt="post pic"
                 src={props.postData.image}
